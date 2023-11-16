@@ -1,0 +1,52 @@
+name: fitrees_customer
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  get: ^4.6.6
+  http: ^1.1.0
+  get_storage: ^2.1.1
+  flutter_svg: ^2.0.7
+  wheel_slider: ^1.1.1
+  google_fonts: ^6.0.0
+  mobile_scanner: ^3.5.1
+  cupertino_icons: ^1.0.2
+  flutter_slidable: ^3.0.0
+  font_awesome_flutter: ^10.5.0
+  flutter_otp_text_field: ^1.1.1
+  country_picker: ^2.0.21
+  dropdown_model_list: ^1.1.5
+  sms_autofill: ^2.3.0
+  image_picker: ^1.0.4
+  image_cropper: ^5.0.0
+  youtube_player_flutter: ^8.1.2
+  url_launcher: ^6.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/icons/
+
+
+  fonts:
+    - family: integralcf
+      fonts:
+        - asset: assets/fonts/integralcf_regular.otf
+        - asset: assets/fonts/integralcf_bold.ttf
+          weight: 800
