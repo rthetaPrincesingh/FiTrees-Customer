@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/goalDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/goalDetailsScreenController.dart';
 import 'package:fitrees_customer/themes.dart';
 import 'package:fitrees_customer/views/userDetailsScreens/activityLevelDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,4 +1,5 @@
-import 'package:fitrees_customer/controllers/activityLevelDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/activityLevelDetailsScreenController.dart';
+import 'package:fitrees_customer/views/userDetailsScreens/mailIdDetailsScreen.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -144,7 +145,7 @@ class activityLevelDetailsScreen extends StatelessWidget {
                       child: CupertinoButton(
                         borderRadius: BorderRadius.circular(48),
                         color: primaryColor,
-                        onPressed: () => controller.updateData(),
+                        onPressed: () => Get.to(mailIdDetailsScreen()),
                         padding: EdgeInsets.zero,
                         child: DefaultTextStyle(
                           style: const TextStyle(

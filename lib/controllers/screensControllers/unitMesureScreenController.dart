@@ -34,32 +34,4 @@ class unitMesureScreenController extends GetxController{
     OptionItem(title: "Oximeter"),
   ]);
   var deviceItemSelected = OptionItem(title: "Thermometer").obs;
-
-  selectDropMenu(itemList, selectedItem, double height){
-    return SelectDropList(
-      hintColorTitle: primaryColor,
-      arrowColor: primaryColor,
-      containerDecoration: BoxDecoration(
-        color: backgroundColor,
-      ),
-      itemSelected: selectedItem,
-      dropListModel: itemList,
-      showIcon: false,
-      showArrowIcon: true,
-      showBorder: true,
-      heightBottomContainer: height,
-      borderColor: lightGreyColor,
-      suffixIcon: Icons.arrow_drop_down,
-      arrowIconSize: 28,
-      paddingDropItem: 10,
-      paddingLeft: 0,
-      paddingBottom: 0,
-      containerPadding:
-      const EdgeInsets.only(left: 0, right: 0),
-      paddingTop: 0,
-      onOptionSelected: (optionItem) {
-        deviceItemSelected.value = optionItem;
-      },
-    );
-  }
 }

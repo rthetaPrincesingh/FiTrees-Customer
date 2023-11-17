@@ -1,5 +1,5 @@
-import 'package:fitrees_customer/views/userDetailsScreens/bodyTypeDetailsScreen.dart';
-import 'package:fitrees_customer/controllers/mailIdDetailsScreenController.dart';
+import 'package:fitrees_customer/views/userDetailsScreens/mailVerificationScreen.dart';
+import 'package:fitrees_customer/controllers/screensControllers/mailIdDetailsScreenController.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,7 +40,7 @@ class mailIdDetailsScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: Text(
-                    "PLEASE ENTER YOUR MAIL",
+                    "PLEASE ENTER YOUR MAIL ID",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'integralcf',
@@ -74,7 +74,7 @@ class mailIdDetailsScreen extends StatelessWidget {
                         child: TextFormField(
                           controller: controller.emailTextController,
                           decoration: InputDecoration(
-                            hintText: "Enter your mail (Optional)",
+                            hintText: "Enter your e-mail (Optional)",
                             hintStyle: GoogleFonts.openSans(
                               fontSize: 20,
                               color: Colors.white54,
@@ -128,7 +128,7 @@ class mailIdDetailsScreen extends StatelessWidget {
                         color: primaryColor,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            Get.to(bodyTypeDetailsScreen());
+                            controller.updateData();
                           }
                         },
                         padding: EdgeInsets.zero,

@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/dobDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/dobDetailsScreenController.dart';
 import 'package:fitrees_customer/themes.dart';
 import 'package:fitrees_customer/views/userDetailsScreens/weightDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,14 +9,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 
-class ageDetailsScreen extends StatelessWidget {
-  const ageDetailsScreen({super.key});
+class dobDetailsScreen extends StatelessWidget {
+  const dobDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final int _nInitValue = 0;
 
-    final controller = Get.put(ageDetailsScreenController());
+    final controller = Get.put(dobDetailsScreenController());
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(

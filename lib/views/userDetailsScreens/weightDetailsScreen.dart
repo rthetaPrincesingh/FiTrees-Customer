@@ -1,13 +1,13 @@
-import 'package:fitrees_customer/controllers/weightDetailsScreenController.dart';
-import 'package:fitrees_customer/modules/keyboardDismiss.dart';
-import 'package:fitrees_customer/themes.dart';
+import 'package:fitrees_customer/controllers/screensControllers/weightDetailsScreenController.dart';
 import 'package:fitrees_customer/views/userDetailsScreens/heightDetailsScreen.dart';
+import 'package:fitrees_customer/modules/keyboardDismiss.dart';
+import 'package:wheel_slider/wheel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fitrees_customer/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:wheel_slider/wheel_slider.dart';
 
 class weightDetailsScreen extends StatelessWidget {
   const weightDetailsScreen({super.key});
@@ -81,29 +81,6 @@ class weightDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              /*Obx(
-                () => Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      (controller.selectedWeightDouble.value + 10).toString(),
-                      style: GoogleFonts.openSans(
-                          fontSize: deviceWidth * 0.14,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      " kg",
-                      style: GoogleFonts.openSans(
-                          fontSize: 20,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          height: 3.5),
-                    ),
-                  ],
-                ),
-              ),*/
               const SizedBox(height: 20),
               WheelSlider(
                 totalCount: 2400,

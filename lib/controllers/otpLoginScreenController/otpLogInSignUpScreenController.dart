@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:get/get.dart';
 import 'dart:async';

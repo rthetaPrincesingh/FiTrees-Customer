@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class ageDetailsScreenController extends GetxController {
+class dobDetailsScreenController extends GetxController {
   RxInt selectedDate = 0.obs;
   RxInt selectedMonth = 0.obs;
   RxInt selectedYear = 139.obs;

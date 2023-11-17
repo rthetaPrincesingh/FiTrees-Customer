@@ -1,5 +1,5 @@
 import 'package:fitrees_customer/views/userDetailsScreens/goalDetailsScreen.dart';
-import 'package:fitrees_customer/controllers/heightDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/heightDetailsScreenController.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wheel_slider/wheel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';

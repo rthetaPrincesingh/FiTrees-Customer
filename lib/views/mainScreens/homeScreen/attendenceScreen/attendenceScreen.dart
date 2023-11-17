@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/attendenceScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/attendenceScreenController.dart';
 import 'package:fitrees_customer/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

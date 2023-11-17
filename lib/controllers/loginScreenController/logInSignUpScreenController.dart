@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:fitrees_customer/modules/countryCodeList.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

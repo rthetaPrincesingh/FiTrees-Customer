@@ -14,7 +14,7 @@ class userDataModel {
   String? goal;
   String? activityLevel;
   DateTime? dob;
-  int? weight;
+  double? weight;
   int? height;
   bool? isActive;
   bool? isEnabled;
@@ -113,7 +113,7 @@ class userDataModel {
     goal: json["goal"],
     activityLevel: json["activityLevel"],
     dob: json["dob"] == null ? null : DateTime.parse(json["dob"]),
-    weight: json["weight"],
+    weight: json["weight"].toDouble(),
     height: json["height"],
     isActive: json["isActive"],
     isEnabled: json["isEnabled"],

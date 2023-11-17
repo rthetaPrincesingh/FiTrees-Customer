@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/appNotificationScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/appNotificationScreenController.dart';
 import 'package:fitrees_customer/modules/horizontalDivider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';

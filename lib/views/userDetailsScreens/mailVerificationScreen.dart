@@ -1,5 +1,7 @@
-import 'package:fitrees_customer/views/userDetailsScreens/bodyTypeDetailsScreen.dart';
-import 'package:fitrees_customer/controllers/screensControllers/userNameDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/mailVerificationScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/mailIdDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
+import 'package:fitrees_customer/views/splashScreen/splashScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fitrees_customer/themes.dart';
@@ -7,14 +9,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class userNameDetailsScreen extends StatelessWidget {
-  const userNameDetailsScreen({super.key});
+class mailVerificationScreen extends StatelessWidget {
+  String token;
+  mailVerificationScreen({super.key, required this.token});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(userNameDetailsScreenController());
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+    final controller = Get.put(mailVerificationScreenController());
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor,
@@ -41,7 +42,7 @@ class userNameDetailsScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: Text(
-                    "PLEASE TELL US YOUR NAME",
+                    "PLEASE VERIFY YOUR MAIL ID",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'integralcf',
@@ -57,7 +58,7 @@ class userNameDetailsScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, top: 10),
                     child: Text(
-                      "Name",
+                      "Email",
                       style: GoogleFonts.openSans(
                         fontSize: 18,
                         color: primaryColor,
@@ -68,14 +69,15 @@ class userNameDetailsScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   width: deviceWidth - 80,
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: controller.firstNameTextController,
+                  child: Column(
+                    children: [
+                      Form(
+                        // key: _formKey,
+                        child: TextFormField(
+                          enabled: false,
+                          // controller: controller.emailTextController,
                           decoration: InputDecoration(
-                            hintText: "First name",
+                            hintText: Get.find<mailIdDetailsScreenController>().emailTextController.text,
                             hintStyle: GoogleFonts.openSans(
                               fontSize: 20,
                               color: Colors.white54,
@@ -85,9 +87,9 @@ class userNameDetailsScreen extends StatelessWidget {
                           cursorColor: Colors.white,
                           cursorOpacityAnimates: true,
                           cursorWidth: 1,
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           autofillHints: const [
-                            AutofillHints.namePrefix,
+                            AutofillHints.email,
                           ],
                           showCursor: true,
                           style: GoogleFonts.openSans(
@@ -96,17 +98,17 @@ class userNameDetailsScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                           validator: (_) {
-                            if (controller.firstNameTextController.text.isEmpty) {
-                              return 'Please enter your name';
-                            }
-                            return null;
+                            // return controller.validateEmail();
                           },
                         ),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                          controller: controller.lastNameTextController,
+                      ),
+                      Form(
+                        // key: _formKey,
+                        child: TextFormField(
+                          enabled: false,
+                          // controller: controller.emailTextController,
                           decoration: InputDecoration(
-                            hintText: "Last name",
+                            hintText: token,
                             hintStyle: GoogleFonts.openSans(
                               fontSize: 20,
                               color: Colors.white54,
@@ -116,9 +118,9 @@ class userNameDetailsScreen extends StatelessWidget {
                           cursorColor: Colors.white,
                           cursorOpacityAnimates: true,
                           cursorWidth: 1,
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           autofillHints: const [
-                            AutofillHints.namePrefix,
+                            AutofillHints.email,
                           ],
                           showCursor: true,
                           style: GoogleFonts.openSans(
@@ -127,28 +129,52 @@ class userNameDetailsScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                           validator: (_) {
-                            if (controller.lastNameTextController.text.isEmpty) {
-                              return 'Please enter your name';
-                            }
-                            return null;
+                            // return controller.validateEmail();
                           },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 const Spacer(),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: RawMaterialButton(
+                        onPressed: () => Get.back(),
+                        elevation: 0,
+                        fillColor: lightGreyColor,
+                        padding: const EdgeInsets.all(10),
+                        shape: const CircleBorder(),
+                        child: const Icon(
+                          Icons.arrow_back_rounded,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ),
                     IntrinsicWidth(
                       child: CupertinoButton(
                         borderRadius: BorderRadius.circular(48),
                         color: primaryColor,
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            Get.to(const bodyTypeDetailsScreen());
-                          }
+                        onPressed: () async {
+                          /*if (_formKey.currentState!.validate()) {
+                            controller.updateData();
+                          }*/
+                          showDialog(context: context, builder: (context){
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: primaryColor,
+                              ),
+                            );
+                          });
+                          if(await activateEmail(token)){
+                            Get.deleteAll();
+                            Get.offAll(splashScreen());
+                          };
                         },
                         padding: EdgeInsets.zero,
                         child: DefaultTextStyle(
@@ -166,7 +192,7 @@ class userNameDetailsScreen extends StatelessWidget {
                                   padding: const EdgeInsets.only(
                                       top: 15, bottom: 15),
                                   child: Text(
-                                    "Next   ",
+                                    "Verify   ",
                                     style: GoogleFonts.openSans(
                                       color: Colors.black,
                                       fontSize: 20,

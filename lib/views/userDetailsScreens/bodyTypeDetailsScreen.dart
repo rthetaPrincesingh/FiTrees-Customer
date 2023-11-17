@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/genderDetailsScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/bodyTypeDetailsScreenController.dart';
 import 'package:fitrees_customer/views/userDetailsScreens/dobDetailsScreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';
@@ -144,7 +144,7 @@ class bodyTypeDetailsScreen extends StatelessWidget {
                     child: CupertinoButton(
                       borderRadius: BorderRadius.circular(48),
                       color: primaryColor,
-                      onPressed: () => Get.to(ageDetailsScreen()),
+                      onPressed: () => Get.to(dobDetailsScreen()),
                       padding: EdgeInsets.zero,
                       child: DefaultTextStyle(
                         style: const TextStyle(

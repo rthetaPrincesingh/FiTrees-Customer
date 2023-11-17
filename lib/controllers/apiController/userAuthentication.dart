@@ -1,7 +1,6 @@
 import 'package:fitrees_customer/controllers/loginScreenController/logInSignUpScreenController.dart';
-import 'package:fitrees_customer/views/authenticationScreen/logInSignUpScreen.dart';
 import 'package:fitrees_customer/views/userDetailsScreens/userNameDetailsScreen.dart';
-import 'package:fitrees_customer/controllers/splashScreenController.dart';
+import 'package:fitrees_customer/views/authenticationScreen/logInSignUpScreen.dart';
 import 'package:fitrees_customer/views/splashScreen/splashScreen.dart';
 import 'package:fitrees_customer/models/userUpdateModel.dart';
 import 'package:fitrees_customer/models/userDataModel.dart';
@@ -31,6 +30,7 @@ Future<bool> userLogin(String countryCode, String phoneNumber) async {
     body: json.encode(requestBody),
   );
 
+  checkStatus(response);
   if (response.statusCode == 200) {
     final responseData = json.decode(response.body);
     if (responseData['message'] == "SMS OTP sent.") {
@@ -38,7 +38,6 @@ Future<bool> userLogin(String countryCode, String phoneNumber) async {
       return true;
     }
   }
-
   print(
       'Request $url failed\nResponse: ${response.statusCode} ${response.reasonPhrase}');
   return false;
@@ -52,7 +51,7 @@ Future<void> userLoginPhoneOTP(String verificationOtp) async {
     "phoneNumber":
         Get.find<logInSignUpScreenController>().phoneNumberController.text,
     "otp": verificationOtp,
-    "source": "CustomerApp"
+    // "source": "CustomerApp"
   };
 
   final response = await http.post(
@@ -89,6 +88,61 @@ Future<void> userLoginPhoneOTP(String verificationOtp) async {
   }
 }
 
+Future<dynamic> verifyEmail(String email) async {
+  var url = Uri.parse(emailVerifyApi);
+
+  var headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+  };
+
+  var body = jsonEncode({'email': email});
+
+  var response = await http.post(
+    url,
+    headers: headers,
+    body: body,
+  );
+
+  checkStatus(response);
+
+  if (response.statusCode == 200) {
+    print('Email sent successfully.');
+    Map<String, dynamic> responseJson = json.decode(response.body);
+    String token = responseJson['token'];
+    return token;
+    // return response.body["token"];
+  } else {
+    print('Failed to send email. Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+  }
+}
+
+Future<bool> activateEmail(String token) async {
+  var url = Uri.parse(emailActivateApi);
+  var requestBody = {
+    'token': token
+  };
+  var encodedBody = json.encode(requestBody);
+  var headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json',
+  };
+
+  var response = await http.post(
+    url,
+    headers: headers,
+    body: encodedBody,
+  );
+
+  if (response.statusCode == 200) {
+    print('Activation successful');
+    print(response.body);
+    return true;
+  }
+  return false;
+}
+
 Future<void> fetchUserData(String userId, String authentication) async {
   final Uri url = Uri.parse("$getUserDataApi/$userId");
 
@@ -102,10 +156,12 @@ Future<void> fetchUserData(String userId, String authentication) async {
     headers: headers,
   );
 
+  checkStatus(response);
   if (response.statusCode == 200) {
     userData = userDataModel.fromJson(response.body);
   } else {
-    print('Request failed with status: ${response.statusCode}\n ${response.body}.');
+    print(
+        'Request failed with status: ${response.statusCode}\n ${response.body}.');
   }
 }
 
@@ -126,6 +182,7 @@ Future<bool> updateUserData(requestBody) async {
     body: jsonBody,
   );
 
+  checkStatus(response);
   if (response.statusCode == 200) {
     print("Profile updated successfully");
     return true;
@@ -157,6 +214,16 @@ void signOut() {
   box.remove("tokens");
   Get.deleteAll();
   Future.delayed(const Duration(milliseconds: 100), () {
-    Get.to(const logInSignUpScreen());
+    Get.offAll(const logInSignUpScreen());
   });
+}
+
+void checkStatus(response) {
+  if (response.statusCode == 401) {
+    // if(response.body.contains("Invalid credentials")){
+    Get.snackbar("Error", "Session Expired. Log In again",
+        backgroundColor: backgroundColor, colorText: textColor);
+    signOut();
+    // }
+  }
 }

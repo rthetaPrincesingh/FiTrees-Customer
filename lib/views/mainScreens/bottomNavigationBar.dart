@@ -1,5 +1,5 @@
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
-import 'package:fitrees_customer/controllers/navigationBarController.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/screensControllers/navigationBarController.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fitrees_customer/themes.dart';
 import 'package:flutter/material.dart';

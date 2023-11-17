@@ -1,8 +1,8 @@
-import 'package:fitrees_customer/views/mainScreens/homeScreen/attendenceScreen/attendenceScreen.dart';
-import 'package:fitrees_customer/views/mainScreens/homeScreen/videoPlayerScreen/videoPlayerScreen.dart';
 import 'package:fitrees_customer/views/mainScreens/homeScreen/workoutCatergoriesScreen/workoutCatergoriesScreen.dart';
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
-import 'package:fitrees_customer/controllers/homeScreenController.dart';
+import 'package:fitrees_customer/views/mainScreens/homeScreen/videoPlayerScreen/videoPlayerScreen.dart';
+import 'package:fitrees_customer/views/mainScreens/homeScreen/attendenceScreen/attendenceScreen.dart';
+import 'package:fitrees_customer/controllers/screensControllers/homeScreenController.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:fitrees_customer/modules/DateTimeConvert.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';
@@ -44,20 +44,24 @@ class homeScreen extends StatelessWidget {
                             ),
                             Tooltip(
                               message: "${userData.firstName}",
-                              child: Text(
-                                "${userData.firstName},",
-                                style: TextStyle(
-                                  fontFamily: 'integralcf',
-                                  color: textColor,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
+                              child: SizedBox(
+                                width: deviceWidth - 190,
+                                child: Text(
+                                  "${userData.firstName},",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontFamily: 'integralcf',
+                                    color: textColor,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),
                           ],
                         ),
                         Text(
-                          "Good morning.",
+                          greetBasedOnTime(),
                           style: GoogleFonts.openSans(
                             fontSize: 16,
                             color: textColor,

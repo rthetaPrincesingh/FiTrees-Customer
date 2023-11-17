@@ -1,6 +1,6 @@
 import 'package:fitrees_customer/controllers/OTPloginScreenController/otpLogInSignUpScreenController.dart';
 import 'package:fitrees_customer/controllers/loginScreenController/logInSignUpScreenController.dart';
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';

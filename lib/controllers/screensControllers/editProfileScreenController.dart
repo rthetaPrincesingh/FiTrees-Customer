@@ -1,8 +1,8 @@
 import 'dart:io';
-
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:fitrees_customer/modules/emailValidator.dart';
 import 'package:fitrees_customer/themes.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +39,9 @@ class editProfileScreenController extends GetxController {
       profileData["email"] = newEmail;
     }
 
+    profileData["height"] = int.parse(heightTextController.text);
+    profileData["weight"] = double.parse(weightTextController.text);
+
     final Map<String, dynamic> requestBody = {
       "profile": profileData,
     };
@@ -53,6 +56,8 @@ class editProfileScreenController extends GetxController {
       if (newEmail.isNotEmpty && newEmail != userData.email) {
         userData.email = newEmail;
       }
+      userData.height = int.parse(heightTextController.text);
+      userData.weight = double.parse(weightTextController.text);
       Get.back();
       Get.snackbar("Updated", "Details successfully updated!");
     } else {

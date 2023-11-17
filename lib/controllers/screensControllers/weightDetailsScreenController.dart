@@ -7,7 +7,6 @@ class weightDetailsScreenController extends GetxController {
 
   void validateAndAdjustWeight() {
     if (weightText.text.isEmpty) {
-      // Handle empty input, e.g., show an error message.
       return;
     }
 
@@ -22,7 +21,6 @@ class weightDetailsScreenController extends GetxController {
       selectedWeightDouble.value = 250.00;
       weightText.text = "250.00";
     } else {
-      // Weight is within the valid range, set it to the entered value
       selectedWeightDouble.value = enteredWeight;
       weightText.text = enteredWeight.toStringAsFixed(2);
     }

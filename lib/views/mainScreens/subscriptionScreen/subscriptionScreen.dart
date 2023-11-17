@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/subscriptionScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/subscriptionScreenController.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fitrees_customer/themes.dart';

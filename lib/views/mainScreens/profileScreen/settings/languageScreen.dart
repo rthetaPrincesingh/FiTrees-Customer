@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/languageScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/languageScreenController.dart';
 import 'package:fitrees_customer/modules/horizontalDivider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';

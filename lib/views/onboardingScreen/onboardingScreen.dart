@@ -1,5 +1,5 @@
 import 'package:fitrees_customer/views/authenticationScreen/logInSignUpScreen.dart';
-import 'package:fitrees_customer/controllers/onboardingScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/onboardingScreenController.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fitrees_customer/themes.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/workoutCatergoriesScreenController.dart';
+import 'package:fitrees_customer/controllers/screensControllers/workoutCatergoriesScreenController.dart';
 import 'package:fitrees_customer/modules/upgradeToPremiumPopup.dart';
 import 'package:fitrees_customer/modules/proUserPopup.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,5 +1,5 @@
 import 'package:fitrees_customer/views/mainScreens/subscriptionScreen/subscriptionScreen.dart';
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:fitrees_customer/views/mainScreens/profileScreen/settingScreen.dart';
 import 'package:fitrees_customer/modules/horizontalDivider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -135,7 +135,7 @@ class profileScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "50 Kg",
+                                    userData.weight.toString() + " kg",
                                     style: TextStyle(
                                         color: textColor,
                                         fontSize: 18,
@@ -164,7 +164,7 @@ class profileScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "183 Cm",
+                                    userData.height.toString() + " Cm",
                                     style: TextStyle(
                                         color: textColor,
                                         fontSize: 18,

@@ -4,6 +4,7 @@ import 'package:fitrees_customer/controllers/loginScreenController/logInSignUpSc
 import 'package:fitrees_customer/views/authenticationScreen/otpLogInSignUpScreen.dart';
 import 'package:fitrees_customer/modules/textWidth.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:fitrees_customer/views/utilScreen/showProgressBar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sms_autofill/sms_autofill.dart';
@@ -496,11 +497,11 @@ class logInSignUpScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(48),
                       color: primaryColor,
                       onPressed: () async {
+                        showProgressBar(context);
                         final phoneNumber =
                             controller.phoneNumberController.text;
                         if (controller.isTermsChecked.value) {
                           if (controller.isPhoneNumberValid(phoneNumber)) {
-                            print('Valid number');
                             await controller.attemptLogin()
                                 ? {
                                     Get.snackbar("Success", "OTP is sent!",

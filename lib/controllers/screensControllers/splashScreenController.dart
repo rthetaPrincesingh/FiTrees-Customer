@@ -1,4 +1,4 @@
-import 'package:fitrees_customer/controllers/authentication/userAuthentication.dart';
+import 'package:fitrees_customer/controllers/apiController/userAuthentication.dart';
 import 'package:fitrees_customer/views/authenticationScreen/logInSignUpScreen.dart';
 import 'package:fitrees_customer/views/mainScreens/bottomNavigationBar.dart';
 import 'package:fitrees_customer/views/onboardingScreen/onboardingScreen.dart';
@@ -31,7 +31,7 @@ class splashScreenController extends GetxController {
     await Future.delayed(
       const Duration(seconds: 3),
       () {
-        Get.delete<splashScreenController>();
+        Get.deleteAll();
         if (isLoggedin != "newLogIn") {
           if (userData.firstName == "User") {
             Get.offAll(const userNameDetailsScreen());
